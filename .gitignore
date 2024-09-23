@@ -1,0 +1,4 @@
+# Ignorar configurações específicas do VSCode
+.vscode/
+
+target/
