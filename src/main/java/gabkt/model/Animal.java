@@ -8,17 +8,20 @@ public class Animal {
     private String raca;
     private int idade;
     private double peso;
+    private Cliente dono;
     private List<Prontuario> historicoMedico;
 
     public Animal() {
     }
 
-    public Animal(String nome, String especie, String raca, int idade, double peso, List<Prontuario> historicoMedico) {
+    public Animal(String nome, String especie, String raca, int idade, double peso, Cliente dono,
+            List<Prontuario> historicoMedico) {
         this.nome = nome;
         this.especie = especie;
         this.raca = raca;
         this.idade = idade;
         this.peso = peso;
+        this.dono = dono;
         this.historicoMedico = historicoMedico;
     }
 
@@ -74,5 +77,13 @@ public class Animal {
     }
 
     public void visualizarHistoricoMedico() {
+    }
+
+    public Cliente getDono() {
+        return dono;
+    }
+
+    public void setDono(Cliente dono) {
+        this.dono = dono;
     };
 }

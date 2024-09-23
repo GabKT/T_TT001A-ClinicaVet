@@ -8,16 +8,19 @@ public class Prontuario {
     private String diagnostico;
     private String tratamento;
     private String observacoes;
+    private Animal animal;
 
     public Prontuario() {
     }
 
-    public Prontuario(String id, Date dataConsulta, String diagnostico, String tratamento, String observacoes) {
+    public Prontuario(String id, Date dataConsulta, String diagnostico, String tratamento, String observacoes,
+            Animal animal) {
         this.id = id;
         this.dataConsulta = dataConsulta;
         this.diagnostico = diagnostico;
         this.tratamento = tratamento;
         this.observacoes = observacoes;
+        this.animal = animal;
     }
 
     public String getId() {
@@ -64,5 +67,13 @@ public class Prontuario {
     }
 
     public void visualizarProntuario() {
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
     }
 }
