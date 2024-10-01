@@ -3,6 +3,7 @@ package gabkt.model;
 import java.util.List;
 
 public class Animal {
+    private String id;
     private String nome;
     private String especie;
     private String raca;
@@ -14,8 +15,9 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(String nome, String especie, String raca, int idade, double peso, Cliente dono,
+    public Animal(String id, String nome, String especie, String raca, int idade, double peso, Cliente dono,
             List<Prontuario> historicoMedico) {
+        this.id = id;
         this.nome = nome;
         this.especie = especie;
         this.raca = raca;
@@ -85,5 +87,17 @@ public class Animal {
 
     public void setDono(Cliente dono) {
         this.dono = dono;
+    }
+
+
+
+    public String getId() {
+        return id;
+    }
+
+
+
+    public void setId(String id) {
+        this.id = id;
     };
 }

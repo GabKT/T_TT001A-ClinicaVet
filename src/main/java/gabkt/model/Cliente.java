@@ -8,14 +8,20 @@ public class Cliente extends Pessoa {
         super();
     }
 
-    public Cliente(String nome, long cpf, long telefone) {
-        super(nome, cpf, telefone);
-    }
-
     public Cliente(String nome, long cpf, long telefone, String endereco, String email) {
         super(nome, cpf, telefone);
         this.endereco = endereco;
         this.email = email;
+    }
+
+    public Cliente(String id, String nome, long cpf, long telefone, String endereco, String email) {
+        super(id, nome, cpf, telefone);
+        this.endereco = endereco;
+        this.email = email;
+    }
+
+    public Cliente(String nome, long cpf, long telefone) {
+        super(nome, cpf, telefone);
     }
 
     public String getEndereco() {
@@ -34,14 +40,4 @@ public class Cliente extends Pessoa {
         this.email = email;
     }
 
-    @Override
-    public void cadastrar() {
-    }
-
-    @Override
-    public void atualizarDados() {
-    }
-
-    public void visualizarInformacaoPet() {
-    }
 }

@@ -1,0 +1,69 @@
+CREATE TABLE pessoa (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf BIGINT NOT NULL UNIQUE,
+    telefone BIGINT
+);
+
+CREATE TABLE cliente (
+    id INTEGER PRIMARY KEY REFERENCES pessoa(id),
+    endereco VARCHAR(200),
+    email VARCHAR(100)
+);
+
+CREATE TABLE veterinario (
+    id INTEGER PRIMARY KEY REFERENCES pessoa(id),
+    crmv VARCHAR(20),
+    especialidade VARCHAR(100)
+);
+
+
+CREATE TABLE animal (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    especie VARCHAR(50) NOT NULL,
+    raca VARCHAR(50),
+    idade INT CHECK (idade >= 0),
+    peso DOUBLE PRECISION CHECK (peso >= 0),
+    dono INT,
+    FOREIGN KEY (dono) REFERENCES cliente (id) ON DELETE SET NULL
+);
+
+CREATE TABLE consulta (
+    id SERIAL PRIMARY KEY,
+    data DATE NOT NULL,
+    horario TIME NOT NULL,
+    tipo VARCHAR(50),
+    status VARCHAR(50),
+    animal INT,
+    cliente INT,
+    veterinario INT,
+    FOREIGN KEY (animal) REFERENCES animal (id) ON DELETE SET NULL,
+    FOREIGN KEY (cliente) REFERENCES cliente (id) ON DELETE SET NULL,
+    FOREIGN KEY (veterinario) REFERENCES veterinario (id) ON DELETE SET NULL
+);
+
+CREATE TABLE exame (
+    id SERIAL PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL,
+    data DATE NOT NULL,
+    resultado VARCHAR(255),
+    consulta_id INT,
+    FOREIGN KEY (consulta_id) REFERENCES consulta (id) ON DELETE CASCADE
+);
+
+CREATE TABLE prontuario (
+    id SERIAL PRIMARY KEY,
+    data_consulta DATE NOT NULL,
+    diagnostico VARCHAR(255),
+    tratamento VARCHAR(255),
+    observacoes TEXT,
+    animal INT,
+    FOREIGN KEY (animal) REFERENCES animal (id) ON DELETE CASCADE
+);
+
+CREATE TABLE relatorio_f (
+    id SERIAL PRIMARY KEY,
+    periodo DATE NOT NULL,
+    valor_total NUMERIC(10, 2) NOT NULL
+);

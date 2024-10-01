@@ -8,14 +8,14 @@ public class Veterinario extends Pessoa {
         super();
     }
 
-    public Veterinario(String nome, long cpf, long telefone) {
-        super(nome, cpf, telefone);
-    }
-
-    public Veterinario(String nome, long cpf, long telefone, String crmv, String especialidade) {
-        super(nome, cpf, telefone);
+    public Veterinario(String id, String nome, long cpf, long telefone, String crmv, String especialidade) {
+        super(id, nome, cpf, telefone);
         this.crmv = crmv;
         this.especialidade = especialidade;
+    }
+
+    public Veterinario(String id, String nome, long cpf, long telefone) {
+        super(id, nome, cpf, telefone);
     }
 
     public String getCrmv() {
@@ -32,14 +32,6 @@ public class Veterinario extends Pessoa {
 
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
-    }
-
-    @Override
-    public void atualizarDados() {
-    }
-
-    @Override
-    public void cadastrar() {
     }
 
     public void realizarAtendimento() {
