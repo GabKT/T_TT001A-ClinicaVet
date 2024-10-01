@@ -26,33 +26,34 @@ public class ClienteDao extends DAO {
             }
         }
 
-        // Inserir na tabela cliente
         String sqlCliente = "INSERT INTO cliente (id, endereco, email) VALUES (?, ?, ?)";
 
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(sqlCliente)) {
-            statement.setInt(1, pessoaId); // Usa o ID da pessoa
+            statement.setInt(1, pessoaId);
             statement.setString(2, cliente.getEndereco());
             statement.setString(3, cliente.getEmail());
 
-            statement.executeUpdate(); // Executa a inserção
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public Cliente getClienteById(String id) {
-        String query = "SELECT * FROM clientes WHERE id = ?";
+    public Cliente getClienteById(int id) {
+        String query = "SELECT p.nome, p.cpf, p.telefone, c.endereco, c.email " +
+                "FROM pessoa p JOIN cliente c ON p.id = c.id " +
+                "WHERE c.id = ?";
         Cliente cliente = null;
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 cliente = new Cliente();
-                cliente.setId(resultSet.getString("id"));
+                cliente.setId(id);
                 cliente.setNome(resultSet.getString("nome"));
                 cliente.setCpf(resultSet.getLong("cpf"));
                 cliente.setTelefone(resultSet.getLong("telefone"));
@@ -66,26 +67,33 @@ public class ClienteDao extends DAO {
     }
 
     public void updateCliente(Cliente cliente) {
-        String query = "UPDATE clientes SET nome = ?, cpf = ?, telefone = ?, endereco = ?, email = ? WHERE id = ?";
+        String query = "UPDATE pessoa SET nome = ?, cpf = ?, telefone = ? " +
+                "WHERE id = (SELECT id FROM cliente WHERE id = ?); " +
+                "UPDATE cliente SET endereco = ?, email = ? WHERE id = ?";
+
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
+
             statement.setString(1, cliente.getNome());
             statement.setLong(2, cliente.getCpf());
             statement.setLong(3, cliente.getTelefone());
-            statement.setString(4, cliente.getEndereco());
-            statement.setString(5, cliente.getEmail());
-            statement.setString(6, cliente.getId());
+            statement.setInt(4, cliente.getId());
+
+            statement.setString(5, cliente.getEndereco());
+            statement.setString(6, cliente.getEmail());
+            statement.setInt(7, cliente.getId());
             statement.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void deleteCliente(String id) {
-        String query = "DELETE FROM clientes WHERE id = ?";
+    public void deleteCliente(int id) {
+        String query = "DELETE FROM cliente WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -93,7 +101,10 @@ public class ClienteDao extends DAO {
     }
 
     public List<Cliente> getAllClientes() {
-        String query = "SELECT * FROM clientes";
+        String query = "SELECT p.id, p.nome, p.cpf, p.telefone, \n" + //
+                "       c.id, c.endereco, c.email\n" + //
+                "FROM pessoa p\n" + //
+                "JOIN cliente c ON p.id = c.id;\n";
         List<Cliente> clientes = new ArrayList<>();
         try (Connection connection = getConnection();
                 Statement statement = connection.createStatement();
@@ -101,7 +112,7 @@ public class ClienteDao extends DAO {
 
             while (resultSet.next()) {
                 Cliente cliente = new Cliente();
-                cliente.setId(resultSet.getString("id"));
+                cliente.setId(resultSet.getInt("id"));
                 cliente.setNome(resultSet.getString("nome"));
                 cliente.setCpf(resultSet.getLong("cpf"));
                 cliente.setTelefone(resultSet.getLong("telefone"));

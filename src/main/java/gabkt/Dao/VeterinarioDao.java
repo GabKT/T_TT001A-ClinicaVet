@@ -9,10 +9,10 @@ import java.util.List;
 public class VeterinarioDao extends DAO {
 
     public void addVeterinario(Veterinario veterinario) {
-        String query = "INSERT INTO veterinarios (id, nome, cpf, telefone, crmv, especialidade) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO veterinario (id, nome, cpf, telefone, crmv, especialidade) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, veterinario.getId());
+            statement.setInt(1, veterinario.getId());
             statement.setString(2, veterinario.getNome());
             statement.setLong(3, veterinario.getCpf());
             statement.setLong(4, veterinario.getTelefone());
@@ -24,17 +24,17 @@ public class VeterinarioDao extends DAO {
         }
     }
 
-    public Veterinario getVeterinarioById(String id) {
-        String query = "SELECT * FROM veterinarios WHERE id = ?";
+    public Veterinario getVeterinarioById(int id) {
+        String query = "SELECT * FROM veterinario WHERE id = ?";
         Veterinario veterinario = null;
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 veterinario = new Veterinario();
-                veterinario.setId(resultSet.getString("id"));
+                veterinario.setId(resultSet.getInt("id"));
                 veterinario.setNome(resultSet.getString("nome"));
                 veterinario.setCpf(resultSet.getLong("cpf"));
                 veterinario.setTelefone(resultSet.getLong("telefone"));
@@ -48,7 +48,7 @@ public class VeterinarioDao extends DAO {
     }
 
     public void updateVeterinario(Veterinario veterinario) {
-        String query = "UPDATE veterinarios SET nome = ?, cpf = ?, telefone = ?, crmv = ?, especialidade = ? WHERE id = ?";
+        String query = "UPDATE veterinario SET nome = ?, cpf = ?, telefone = ?, crmv = ?, especialidade = ? WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, veterinario.getNome());
@@ -56,7 +56,7 @@ public class VeterinarioDao extends DAO {
             statement.setLong(3, veterinario.getTelefone());
             statement.setString(4, veterinario.getCrmv());
             statement.setString(5, veterinario.getEspecialidade());
-            statement.setString(6, veterinario.getId());
+            statement.setInt(6, veterinario.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,7 +64,7 @@ public class VeterinarioDao extends DAO {
     }
 
     public void deleteVeterinario(String id) {
-        String query = "DELETE FROM veterinarios WHERE id = ?";
+        String query = "DELETE FROM veterinario WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, id);
@@ -83,7 +83,7 @@ public class VeterinarioDao extends DAO {
 
             while (resultSet.next()) {
                 Veterinario veterinario = new Veterinario();
-                veterinario.setId(resultSet.getString("id"));
+                veterinario.setId(resultSet.getInt("id"));
                 veterinario.setNome(resultSet.getString("nome"));
                 veterinario.setCpf(resultSet.getLong("cpf"));
                 veterinario.setTelefone(resultSet.getLong("telefone"));

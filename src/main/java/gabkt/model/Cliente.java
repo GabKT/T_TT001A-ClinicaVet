@@ -14,7 +14,7 @@ public class Cliente extends Pessoa {
         this.email = email;
     }
 
-    public Cliente(String id, String nome, long cpf, long telefone, String endereco, String email) {
+    public Cliente(int id, String nome, long cpf, long telefone, String endereco, String email) {
         super(id, nome, cpf, telefone);
         this.endereco = endereco;
         this.email = email;
@@ -38,6 +38,12 @@ public class Cliente extends Pessoa {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "\nCliente [endereco=" + endereco + ", email=" + email + ", getNome()=" + getNome() + ", getCpf()="
+                + getCpf() + ", getTelefone()=" + getTelefone() + ", getId()=" + getId() + "]\n";
     }
 
 }

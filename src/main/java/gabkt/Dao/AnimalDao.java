@@ -8,7 +8,7 @@ import java.util.List;
 public class AnimalDao extends DAO {
 
     public void addAnimal(Animal animal) {
-        String query = "INSERT INTO animais (id, nome, especie, raca, idade, peso, dono_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO animal (id, nome, especie, raca, idade, peso, dono_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, animal.getId());
@@ -17,19 +17,19 @@ public class AnimalDao extends DAO {
             statement.setString(4, animal.getRaca());
             statement.setInt(5, animal.getIdade());
             statement.setDouble(6, animal.getPeso());
-            statement.setString(7, animal.getDono().getId());
+            statement.setInt(7, animal.getDono().getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public Animal getAnimalById(String id) {
-        String query = "SELECT * FROM animais WHERE id = ?";
+    public Animal getAnimalById(int id) {
+        String query = "SELECT * FROM animal WHERE id = ?";
         Animal animal = null;
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
@@ -48,7 +48,7 @@ public class AnimalDao extends DAO {
     }
 
     public void updateAnimal(Animal animal) {
-        String query = "UPDATE animais SET nome = ?, especie = ?, raca = ?, idade = ?, peso = ?, dono_id = ? WHERE id = ?";
+        String query = "UPDATE animal SET nome = ?, especie = ?, raca = ?, idade = ?, peso = ?, dono_id = ? WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, animal.getNome());
@@ -56,7 +56,7 @@ public class AnimalDao extends DAO {
             statement.setString(3, animal.getRaca());
             statement.setInt(4, animal.getIdade());
             statement.setDouble(5, animal.getPeso());
-            statement.setString(6, animal.getDono().getId());
+            statement.setInt(6, animal.getDono().getId());
             statement.setString(7, animal.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -64,11 +64,11 @@ public class AnimalDao extends DAO {
         }
     }
 
-    public void deleteAnimal(String id) {
-        String query = "DELETE FROM animais WHERE id = ?";
+    public void deleteAnimal(int id) {
+        String query = "DELETE FROM animal WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

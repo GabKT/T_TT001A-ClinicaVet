@@ -67,3 +67,35 @@ CREATE TABLE relatorio_f (
     periodo DATE NOT NULL,
     valor_total NUMERIC(10, 2) NOT NULL
 );
+
+Cliente cliente1 = new Cliente();
+        cliente1.setId(1);
+        cliente1.setNome("Gabriel Silva");
+        cliente1.setCpf(12345673901L);
+        cliente1.setTelefone(11987654321L);
+        cliente1.setEndereco("Rua A, 123");
+        cliente1.setEmail("gabriel.silva@email.com");
+
+        Cliente cliente2 = new Cliente();
+        cliente2.setId(2);
+        cliente2.setNome("Maria Oliveira");
+        cliente2.setCpf(98765432100L);
+        cliente2.setTelefone(21912345678L);
+        cliente2.setEndereco("Avenida B, 456");
+        cliente2.setEmail("maria.oliveira@email.com");
+
+        Cliente cliente3 = new Cliente();
+        cliente3.setId(3);
+        cliente3.setNome("Carlos Souza");
+        cliente3.setCpf(11122233344L);
+        cliente3.setTelefone(31999988888L);
+        cliente3.setEndereco("Rua C, 789");
+        cliente3.setEmail("carlos.souza@email.com");
+
+        Cliente cliente4 = new Cliente();
+        cliente4.setId(4);
+        cliente4.setNome("Ana Pereira");
+        cliente4.setCpf(55566677788L);
+        cliente4.setTelefone(11912341234L);
+        cliente4.setEndereco("Travessa D, 321");
+        cliente4.setEmail("ana.pereira@email.com");

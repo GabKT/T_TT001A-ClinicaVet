@@ -33,8 +33,8 @@ public class ConsultaDao {
             stmt.setString(4, consulta.getTipo());
             stmt.setString(5, consulta.getStatus());
             stmt.setString(6, consulta.getAnimal().getId());
-            stmt.setString(7, consulta.getCliente().getId());
-            stmt.setString(8, consulta.getVeterinario().getId());
+            stmt.setInt(7, consulta.getCliente().getId());
+            stmt.setInt(8, consulta.getVeterinario().getId());
             stmt.executeUpdate();
         }
     }
@@ -55,8 +55,8 @@ public class ConsultaDao {
                 consulta.setTipo(rs.getString("tipo"));
                 consulta.setStatus(rs.getString("status"));
                 consulta.setAnimal(new Animal(rs.getString("animal_id"), sql, sql, sql, 0, 0, null, null));
-                consulta.setCliente(new Cliente(rs.getString("cliente_id"), sql, 0, 0, sql, sql));
-                consulta.setVeterinario(new Veterinario(rs.getString("veterinario_id"), sql, 0, 0));
+                consulta.setCliente(new Cliente(rs.getInt("cliente_id"), sql, 0, 0, sql, sql));
+                consulta.setVeterinario(new Veterinario(rs.getInt("veterinario_id"), sql, 0, 0));
             }
         }
 
@@ -73,17 +73,17 @@ public class ConsultaDao {
             stmt.setString(3, consulta.getTipo());
             stmt.setString(4, consulta.getStatus());
             stmt.setString(5, consulta.getAnimal().getId());
-            stmt.setString(6, consulta.getCliente().getId());
-            stmt.setString(7, consulta.getVeterinario().getId());
+            stmt.setInt(6, consulta.getCliente().getId());
+            stmt.setInt(7, consulta.getVeterinario().getId());
             stmt.setString(8, consulta.getId());
             stmt.executeUpdate();
         }
     }
 
-    public void excluirConsulta(String id) throws SQLException {
+    public void excluirConsulta(int id) throws SQLException {
         String sql = "DELETE FROM consultas WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, id);
+            stmt.setInt(1, id);
             stmt.executeUpdate();
         }
     }
@@ -103,8 +103,8 @@ public class ConsultaDao {
                 consulta.setTipo(rs.getString("tipo"));
                 consulta.setStatus(rs.getString("status"));
                 consulta.setAnimal(new Animal(rs.getString("animal_id"), sql, sql, sql, 0, 0, null, null));
-                consulta.setCliente(new Cliente(rs.getString("cliente_id"), sql, 0, 0, sql, sql));
-                consulta.setVeterinario(new Veterinario(rs.getString("veterinario_id"), sql, 0, 0));
+                consulta.setCliente(new Cliente(rs.getInt("cliente_id"), sql, 0, 0, sql, sql));
+                consulta.setVeterinario(new Veterinario(rs.getInt("veterinario_id"), sql, 0, 0));
                 consultas.add(consulta);
             }
         }

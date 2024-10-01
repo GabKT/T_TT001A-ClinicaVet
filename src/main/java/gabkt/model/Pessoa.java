@@ -1,7 +1,7 @@
 package gabkt.model;
 
 public abstract class Pessoa {
-    private String id;
+    private int id;
     private String nome;
     private long cpf;
     private long telefone;
@@ -9,7 +9,7 @@ public abstract class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(String id, String nome, long cpf, long telefone) {
+    public Pessoa(int id, String nome, long cpf, long telefone) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -46,11 +46,11 @@ public abstract class Pessoa {
         this.telefone = telefone;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }
