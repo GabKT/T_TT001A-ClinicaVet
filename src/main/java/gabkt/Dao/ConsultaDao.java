@@ -54,7 +54,7 @@ public class ConsultaDao {
                 consulta.setHorario(TimeZone.getTimeZone(rs.getString("horario")));
                 consulta.setTipo(rs.getString("tipo"));
                 consulta.setStatus(rs.getString("status"));
-                consulta.setAnimal(new Animal(rs.getInt("animal_id"), sql, sql, sql, 0, 0, null, null));
+                consulta.setAnimal(new Animal(rs.getInt("animal_id"), sql, sql, sql, 0, 0, 0, null));
                 consulta.setCliente(new Cliente(rs.getInt("cliente_id"), sql, 0, 0, sql, sql));
                 consulta.setVeterinario(new Veterinario(rs.getInt("veterinario_id"), sql, 0, 0));
             }
@@ -102,7 +102,7 @@ public class ConsultaDao {
                 consulta.setHorario(TimeZone.getTimeZone(rs.getString("horario")));
                 consulta.setTipo(rs.getString("tipo"));
                 consulta.setStatus(rs.getString("status"));
-                consulta.setAnimal(new Animal(rs.getInt("animal_id"), sql, sql, sql, 0, 0, null, null));
+                consulta.setAnimal(new Animal(rs.getInt("animal_id"), sql, sql, sql, 0, 0, 0, null));
                 consulta.setCliente(new Cliente(rs.getInt("cliente_id"), sql, 0, 0, sql, sql));
                 consulta.setVeterinario(new Veterinario(rs.getInt("veterinario_id"), sql, 0, 0));
                 consultas.add(consulta);

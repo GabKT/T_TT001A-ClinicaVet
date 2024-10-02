@@ -8,16 +8,15 @@ import java.util.List;
 public class AnimalDao extends DAO {
 
     public void addAnimal(Animal animal) {
-        String query = "INSERT INTO animal (id, nome, especie, raca, idade, peso, dono_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO animal (nome, especie, raca, idade, peso, dono) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, animal.getId());
-            statement.setString(2, animal.getNome());
-            statement.setString(3, animal.getEspecie());
-            statement.setString(4, animal.getRaca());
-            statement.setInt(5, animal.getIdade());
-            statement.setDouble(6, animal.getPeso());
-            statement.setInt(7, animal.getDono().getId());
+            statement.setString(1, animal.getNome());
+            statement.setString(2, animal.getEspecie());
+            statement.setString(3, animal.getRaca());
+            statement.setInt(4, animal.getIdade());
+            statement.setDouble(5, animal.getPeso());
+            statement.setInt(6, animal.getDono());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -40,6 +39,7 @@ public class AnimalDao extends DAO {
                 animal.setRaca(resultSet.getString("raca"));
                 animal.setIdade(resultSet.getInt("idade"));
                 animal.setPeso(resultSet.getDouble("peso"));
+                animal.setDono(resultSet.getInt("dono"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,7 +48,7 @@ public class AnimalDao extends DAO {
     }
 
     public void updateAnimal(Animal animal) {
-        String query = "UPDATE animal SET nome = ?, especie = ?, raca = ?, idade = ?, peso = ?, dono_id = ? WHERE id = ?";
+        String query = "UPDATE animal SET nome = ?, especie = ?, raca = ?, idade = ?, peso = ?, dono = ? WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, animal.getNome());
@@ -56,7 +56,7 @@ public class AnimalDao extends DAO {
             statement.setString(3, animal.getRaca());
             statement.setInt(4, animal.getIdade());
             statement.setDouble(5, animal.getPeso());
-            statement.setInt(6, animal.getDono().getId());
+            statement.setInt(6, animal.getDono());
             statement.setInt(7, animal.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -76,7 +76,7 @@ public class AnimalDao extends DAO {
     }
 
     public List<Animal> getAllAnimals() {
-        String query = "SELECT * FROM animais";
+        String query = "SELECT * FROM animal";
         List<Animal> animais = new ArrayList<>();
         try (Connection connection = getConnection();
                 Statement statement = connection.createStatement();
@@ -90,11 +90,38 @@ public class AnimalDao extends DAO {
                 animal.setRaca(resultSet.getString("raca"));
                 animal.setIdade(resultSet.getInt("idade"));
                 animal.setPeso(resultSet.getDouble("peso"));
+                animal.setDono(resultSet.getInt("dono"));
                 animais.add(animal);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return animais;
+    }
+
+    public Animal getAnimalByName(String name, int dono) {
+        String query = "SELECT * FROM animal WHERE nome = ? AND dono = ?";
+        Animal animal = null;
+
+        try (Connection connection = getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, dono);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                animal = new Animal();
+                animal.setId(resultSet.getInt("id"));
+                animal.setNome(resultSet.getString("nome"));
+                animal.setEspecie(resultSet.getString("especie"));
+                animal.setRaca(resultSet.getString("raca"));
+                animal.setIdade(resultSet.getInt("idade"));
+                animal.setPeso(resultSet.getDouble("peso"));
+                animal.setDono(resultSet.getInt("dono"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return animal;
     }
 }

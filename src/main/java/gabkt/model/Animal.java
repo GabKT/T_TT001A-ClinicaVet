@@ -9,13 +9,13 @@ public class Animal {
     private String raca;
     private int idade;
     private double peso;
-    private Cliente dono;
+    private int dono;
     private List<Prontuario> historicoMedico;
 
     public Animal() {
     }
 
-    public Animal(int id, String nome, String especie, String raca, int idade, double peso, Cliente dono,
+    public Animal(int id, String nome, String especie, String raca, int idade, double peso, int dono,
             List<Prontuario> historicoMedico) {
         this.id = id;
         this.nome = nome;
@@ -81,11 +81,11 @@ public class Animal {
     public void visualizarHistoricoMedico() {
     }
 
-    public Cliente getDono() {
+    public int getDono() {
         return dono;
     }
 
-    public void setDono(Cliente dono) {
+    public void setDono(int dono) {
         this.dono = dono;
     }
 
@@ -95,5 +95,12 @@ public class Animal {
 
     public void setId(int id) {
         this.id = id;
-    };
+    }
+
+    @Override
+    public String toString() {
+        return "\nAnimal [id=" + id + ", nome=" + nome + ", especie=" + especie + ", raca=" + raca + ", idade=" + idade
+                + ", peso=" + peso + ", dono=" + dono + "]\n";
+    }
+
 }

@@ -103,3 +103,13 @@ Cliente cliente1 = new Cliente();
         cliente4.setTelefone(11912341234L);
         cliente4.setEndereco("Travessa D, 321");
         cliente4.setEmail("ana.pereira@email.com");
+
+Animal animal = new Animal();
+        animal.setNome("Rex");
+        animal.setEspecie("Cachorro");
+        animal.setRaca("Labrador");
+        animal.setIdade(5);
+        animal.setPeso(30.5);
+        animal.setDono(27);
+
+        animalDAO.addAnimal(animal);
