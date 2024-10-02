@@ -3,7 +3,7 @@ package gabkt.model;
 import java.util.Date;
 
 public class Exame {
-    private String id;
+    private int id;
     private String tipo;
     private Date data;
     private String resultado;
@@ -11,14 +11,14 @@ public class Exame {
     public Exame() {
     }
 
-    public Exame(String id, String tipo, Date data, String resultado) {
+    public Exame(int id, String tipo, Date data, String resultado) {
         this.id = id;
         this.tipo = tipo;
         this.data = data;
         this.resultado = resultado;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -34,7 +34,7 @@ public class Exame {
         return resultado;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

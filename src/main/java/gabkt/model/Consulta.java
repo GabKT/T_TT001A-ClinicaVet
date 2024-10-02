@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class Consulta {
-    private String id;
+    private int id;
     private Date data;
     private TimeZone horario;
     private String tipo;
@@ -16,7 +16,7 @@ public class Consulta {
     public Consulta() {
     }
 
-    public Consulta(String id, Date data, TimeZone horario, String tipo, String status, Animal animal, Cliente cliente,
+    public Consulta(int id, Date data, TimeZone horario, String tipo, String status, Animal animal, Cliente cliente,
             Veterinario veterinario) {
         this.id = id;
         this.data = data;
@@ -28,11 +28,11 @@ public class Consulta {
         this.veterinario = veterinario;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -68,12 +68,6 @@ public class Consulta {
         this.status = status;
     }
 
-    public void agendarConsulta() {
-    }
-
-    public void cancelarConsulta() {
-    }
-
     public Animal getAnimal() {
         return animal;
     }
@@ -101,7 +95,7 @@ public class Consulta {
 
 /*
  * 
-
+ * 
  * 
  * 
  * 

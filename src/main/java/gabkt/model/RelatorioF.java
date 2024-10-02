@@ -3,24 +3,24 @@ package gabkt.model;
 import java.util.Date;
 
 public class RelatorioF {
-    private String id;
+    private int id;
     private Date periodo;
     private Double valorTotal;
 
     public RelatorioF() {
     }
 
-    public RelatorioF(String id, Date periodo, Double valorTotal) {
+    public RelatorioF(int id, Date periodo, Double valorTotal) {
         this.id = id;
         this.periodo = periodo;
         this.valorTotal = valorTotal;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

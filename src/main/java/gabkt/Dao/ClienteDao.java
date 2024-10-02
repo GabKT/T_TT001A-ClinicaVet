@@ -68,7 +68,7 @@ public class ClienteDao extends DAO {
 
     public void updateCliente(Cliente cliente) {
         String query = "UPDATE pessoa SET nome = ?, cpf = ?, telefone = ? " +
-                "WHERE id = (SELECT id FROM cliente WHERE id = ?); " +
+                "WHERE id = ?; " +
                 "UPDATE cliente SET endereco = ?, email = ? WHERE id = ?";
 
         try (Connection connection = getConnection();
@@ -90,11 +90,27 @@ public class ClienteDao extends DAO {
     }
 
     public void deleteCliente(int id) {
-        String query = "DELETE FROM cliente WHERE id = ?";
-        try (Connection connection = getConnection();
-                PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, id);
-            statement.executeUpdate();
+        String deleteClienteQuery = "DELETE FROM cliente WHERE id = ?";
+        String deletePessoaQuery = "DELETE FROM pessoa WHERE id = ?";
+
+        try (Connection connection = getConnection()) {
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement clienteStmt = connection.prepareStatement(deleteClienteQuery);
+                    PreparedStatement pessoaStmt = connection.prepareStatement(deletePessoaQuery)) {
+
+                clienteStmt.setInt(1, id);
+                clienteStmt.executeUpdate();
+
+                pessoaStmt.setInt(1, id);
+                pessoaStmt.executeUpdate();
+
+                connection.commit();
+
+            } catch (SQLException e) {
+                connection.rollback();
+                e.printStackTrace();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

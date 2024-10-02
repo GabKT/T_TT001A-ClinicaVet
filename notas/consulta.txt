@@ -68,6 +68,10 @@ CREATE TABLE relatorio_f (
     valor_total NUMERIC(10, 2) NOT NULL
 );
 
+SELECT p.id, p.nome, p.cpf, p.telefone, v.crmv, v.especialidade
+                FROM veterinario v
+               JOIN pessoa p ON v.id = p.id
+
 Cliente cliente1 = new Cliente();
         cliente1.setId(1);
         cliente1.setNome("Gabriel Silva");

@@ -3,7 +3,7 @@ package gabkt.model;
 import java.util.Date;
 
 public class Prontuario {
-    private String id;
+    private int id;
     private Date dataConsulta;
     private String diagnostico;
     private String tratamento;
@@ -13,7 +13,7 @@ public class Prontuario {
     public Prontuario() {
     }
 
-    public Prontuario(String id, Date dataConsulta, String diagnostico, String tratamento, String observacoes,
+    public Prontuario(int id, Date dataConsulta, String diagnostico, String tratamento, String observacoes,
             Animal animal) {
         this.id = id;
         this.dataConsulta = dataConsulta;
@@ -23,11 +23,11 @@ public class Prontuario {
         this.animal = animal;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -9,10 +9,10 @@ import java.util.List;
 public class ExameDao extends DAO {
 
     public void addExame(Exame exame) {
-        String query = "INSERT INTO exames (id, tipo, data, resultado) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO exame (id, tipo, data, resultado) VALUES (?, ?, ?, ?)";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, exame.getId());
+            statement.setInt(1, exame.getId());
             statement.setString(2, exame.getTipo());
             statement.setDate(3, new java.sql.Date(exame.getData().getTime()));
             statement.setString(4, exame.getResultado());
@@ -23,7 +23,7 @@ public class ExameDao extends DAO {
     }
 
     public Exame getExameById(String id) {
-        String query = "SELECT * FROM exames WHERE id = ?";
+        String query = "SELECT * FROM exame WHERE id = ?";
         Exame exame = null;
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
@@ -32,7 +32,7 @@ public class ExameDao extends DAO {
 
             if (resultSet.next()) {
                 exame = new Exame();
-                exame.setId(resultSet.getString("id"));
+                exame.setId(resultSet.getInt("id"));
                 exame.setTipo(resultSet.getString("tipo"));
                 exame.setData(resultSet.getDate("data"));
                 exame.setResultado(resultSet.getString("resultado"));
@@ -44,13 +44,13 @@ public class ExameDao extends DAO {
     }
 
     public void updateExame(Exame exame) {
-        String query = "UPDATE exames SET tipo = ?, data = ?, resultado = ? WHERE id = ?";
+        String query = "UPDATE exame SET tipo = ?, data = ?, resultado = ? WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, exame.getTipo());
             statement.setDate(2, new java.sql.Date(exame.getData().getTime()));
             statement.setString(3, exame.getResultado());
-            statement.setString(4, exame.getId());
+            statement.setInt(4, exame.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -58,7 +58,7 @@ public class ExameDao extends DAO {
     }
 
     public void deleteExame(String id) {
-        String query = "DELETE FROM exames WHERE id = ?";
+        String query = "DELETE FROM exame WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, id);
@@ -69,7 +69,7 @@ public class ExameDao extends DAO {
     }
 
     public List<Exame> getAllExames() {
-        String query = "SELECT * FROM exames";
+        String query = "SELECT * FROM exame";
         List<Exame> exames = new ArrayList<>();
         try (Connection connection = getConnection();
                 Statement statement = connection.createStatement();
@@ -77,7 +77,7 @@ public class ExameDao extends DAO {
 
             while (resultSet.next()) {
                 Exame exame = new Exame();
-                exame.setId(resultSet.getString("id"));
+                exame.setId(resultSet.getInt("id"));
                 exame.setTipo(resultSet.getString("tipo"));
                 exame.setData(resultSet.getDate("data"));
                 exame.setResultado(resultSet.getString("resultado"));

@@ -3,7 +3,7 @@ package gabkt.Dao;
 import java.sql.*;
 
 public class DAO {
-    private static final String DB = "jdbc:postgresql://localhost:5433/clinicaVet";
+    private static final String DB = "jdbc:postgresql://localhost:5432/clinicaVet";
     private static final String USER = "postgres";
     private static final String PASSWORD = "123";
 

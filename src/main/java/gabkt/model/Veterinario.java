@@ -42,4 +42,11 @@ public class Veterinario extends Pessoa {
 
     public void solicitarExame() {
     }
+
+    @Override
+    public String toString() {
+        return "\nVeterinario [crmv=" + crmv + ", especialidade=" + especialidade + ", getNome()=" + getNome()
+                + ", getCpf()=" + getCpf() + ", getTelefone()=" + getTelefone() + ", getId()=" + getId() + "]\n";
+    }
+
 }

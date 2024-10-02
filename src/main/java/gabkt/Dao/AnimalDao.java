@@ -11,7 +11,7 @@ public class AnimalDao extends DAO {
         String query = "INSERT INTO animal (id, nome, especie, raca, idade, peso, dono_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, animal.getId());
+            statement.setInt(1, animal.getId());
             statement.setString(2, animal.getNome());
             statement.setString(3, animal.getEspecie());
             statement.setString(4, animal.getRaca());
@@ -34,7 +34,7 @@ public class AnimalDao extends DAO {
 
             if (resultSet.next()) {
                 animal = new Animal();
-                animal.setId(resultSet.getString("id"));
+                animal.setId(resultSet.getInt("id"));
                 animal.setNome(resultSet.getString("nome"));
                 animal.setEspecie(resultSet.getString("especie"));
                 animal.setRaca(resultSet.getString("raca"));
@@ -57,7 +57,7 @@ public class AnimalDao extends DAO {
             statement.setInt(4, animal.getIdade());
             statement.setDouble(5, animal.getPeso());
             statement.setInt(6, animal.getDono().getId());
-            statement.setString(7, animal.getId());
+            statement.setInt(7, animal.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -84,7 +84,7 @@ public class AnimalDao extends DAO {
 
             while (resultSet.next()) {
                 Animal animal = new Animal();
-                animal.setId(resultSet.getString("id"));
+                animal.setId(resultSet.getInt("id"));
                 animal.setNome(resultSet.getString("nome"));
                 animal.setEspecie(resultSet.getString("especie"));
                 animal.setRaca(resultSet.getString("raca"));

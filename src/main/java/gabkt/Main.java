@@ -4,7 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import gabkt.Dao.ClienteDao;
+import gabkt.Dao.VeterinarioDao;
 import gabkt.model.Cliente;
+import gabkt.model.Veterinario;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +16,12 @@ public class Main {
         List<Cliente> listaClientes = clienteDao.getAllClientes();
 
         System.out.println(listaClientes.toString());
+
+        VeterinarioDao veterinarioDao = new VeterinarioDao();
+
+        List<Veterinario> listaVet = veterinarioDao.getAllVeterinarios();
+
+        System.out.println(listaVet);
 
         /*
          * clienteDao.addCliente(cliente);

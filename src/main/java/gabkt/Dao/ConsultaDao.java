@@ -23,16 +23,16 @@ public class ConsultaDao {
     }
 
     public void inserirConsulta(Consulta consulta) throws SQLException {
-        String sql = "INSERT INTO consultas (id, data, horario, tipo, status, animal_id, cliente_id, veterinario_id) "
+        String sql = "INSERT INTO consulta (id, data, horario, tipo, status, animal_id, cliente_id, veterinario_id) "
                 +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, consulta.getId());
+            stmt.setInt(1, consulta.getId());
             stmt.setDate(2, new java.sql.Date(consulta.getData().getTime()));
             stmt.setString(3, consulta.getHorario().getID());
             stmt.setString(4, consulta.getTipo());
             stmt.setString(5, consulta.getStatus());
-            stmt.setString(6, consulta.getAnimal().getId());
+            stmt.setInt(6, consulta.getAnimal().getId());
             stmt.setInt(7, consulta.getCliente().getId());
             stmt.setInt(8, consulta.getVeterinario().getId());
             stmt.executeUpdate();
@@ -40,7 +40,7 @@ public class ConsultaDao {
     }
 
     public Consulta buscarConsultaPorId(String id) throws SQLException {
-        String sql = "SELECT * FROM consultas WHERE id = ?";
+        String sql = "SELECT * FROM consulta WHERE id = ?";
         Consulta consulta = null;
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -49,12 +49,12 @@ public class ConsultaDao {
 
             if (rs.next()) {
                 consulta = new Consulta();
-                consulta.setId(rs.getString("id"));
+                consulta.setId(rs.getInt("id"));
                 consulta.setData(rs.getDate("data"));
                 consulta.setHorario(TimeZone.getTimeZone(rs.getString("horario")));
                 consulta.setTipo(rs.getString("tipo"));
                 consulta.setStatus(rs.getString("status"));
-                consulta.setAnimal(new Animal(rs.getString("animal_id"), sql, sql, sql, 0, 0, null, null));
+                consulta.setAnimal(new Animal(rs.getInt("animal_id"), sql, sql, sql, 0, 0, null, null));
                 consulta.setCliente(new Cliente(rs.getInt("cliente_id"), sql, 0, 0, sql, sql));
                 consulta.setVeterinario(new Veterinario(rs.getInt("veterinario_id"), sql, 0, 0));
             }
@@ -64,7 +64,7 @@ public class ConsultaDao {
     }
 
     public void atualizarConsulta(Consulta consulta) throws SQLException {
-        String sql = "UPDATE consultas SET data = ?, horario = ?, tipo = ?, status = ?, animal_id = ?, cliente_id = ?, veterinario_id = ? "
+        String sql = "UPDATE consulta SET data = ?, horario = ?, tipo = ?, status = ?, animal_id = ?, cliente_id = ?, veterinario_id = ? "
                 +
                 "WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -72,16 +72,16 @@ public class ConsultaDao {
             stmt.setString(2, consulta.getHorario().getID());
             stmt.setString(3, consulta.getTipo());
             stmt.setString(4, consulta.getStatus());
-            stmt.setString(5, consulta.getAnimal().getId());
+            stmt.setInt(5, consulta.getAnimal().getId());
             stmt.setInt(6, consulta.getCliente().getId());
             stmt.setInt(7, consulta.getVeterinario().getId());
-            stmt.setString(8, consulta.getId());
+            stmt.setInt(8, consulta.getId());
             stmt.executeUpdate();
         }
     }
 
     public void excluirConsulta(int id) throws SQLException {
-        String sql = "DELETE FROM consultas WHERE id = ?";
+        String sql = "DELETE FROM consulta WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
@@ -89,7 +89,7 @@ public class ConsultaDao {
     }
 
     public List<Consulta> listarConsultas() throws SQLException {
-        String sql = "SELECT * FROM consultas";
+        String sql = "SELECT * FROM consulta";
         List<Consulta> consultas = new ArrayList<>();
 
         try (PreparedStatement stmt = connection.prepareStatement(sql);
@@ -97,12 +97,12 @@ public class ConsultaDao {
 
             while (rs.next()) {
                 Consulta consulta = new Consulta();
-                consulta.setId(rs.getString("id"));
+                consulta.setId(rs.getInt("id"));
                 consulta.setData(rs.getDate("data"));
                 consulta.setHorario(TimeZone.getTimeZone(rs.getString("horario")));
                 consulta.setTipo(rs.getString("tipo"));
                 consulta.setStatus(rs.getString("status"));
-                consulta.setAnimal(new Animal(rs.getString("animal_id"), sql, sql, sql, 0, 0, null, null));
+                consulta.setAnimal(new Animal(rs.getInt("animal_id"), sql, sql, sql, 0, 0, null, null));
                 consulta.setCliente(new Cliente(rs.getInt("cliente_id"), sql, 0, 0, sql, sql));
                 consulta.setVeterinario(new Veterinario(rs.getInt("veterinario_id"), sql, 0, 0));
                 consultas.add(consulta);
