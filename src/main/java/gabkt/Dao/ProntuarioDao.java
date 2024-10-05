@@ -8,27 +8,26 @@ import java.util.List;
 public class ProntuarioDao extends DAO {
 
     public void addProntuario(Prontuario prontuario) {
-        String query = "INSERT INTO prontuario (id, data_consulta, diagnostico, tratamento, observacoes, animal_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO prontuario (data_consulta, diagnostico, tratamento, observacoes, animal_id) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, prontuario.getId());
-            statement.setDate(2, new java.sql.Date(prontuario.getDataConsulta().getTime()));
-            statement.setString(3, prontuario.getDiagnostico());
-            statement.setString(4, prontuario.getTratamento());
-            statement.setString(5, prontuario.getObservacoes());
-            statement.setInt(6, prontuario.getAnimal().getId());
+            statement.setDate(1, new java.sql.Date(prontuario.getDataConsulta().getTime()));
+            statement.setString(2, prontuario.getDiagnostico());
+            statement.setString(3, prontuario.getTratamento());
+            statement.setString(4, prontuario.getObservacoes());
+            statement.setInt(5, prontuario.getAnimal());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public Prontuario getProntuarioById(String id) {
+    public Prontuario getProntuarioById(int id) {
         String query = "SELECT * FROM prontuario WHERE id = ?";
         Prontuario prontuario = null;
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
@@ -38,6 +37,7 @@ public class ProntuarioDao extends DAO {
                 prontuario.setDiagnostico(resultSet.getString("diagnostico"));
                 prontuario.setTratamento(resultSet.getString("tratamento"));
                 prontuario.setObservacoes(resultSet.getString("observacoes"));
+                prontuario.setAnimal(resultSet.getInt("animal"));
 
             }
         } catch (SQLException e) {
@@ -47,14 +47,14 @@ public class ProntuarioDao extends DAO {
     }
 
     public void updateProntuario(Prontuario prontuario) {
-        String query = "UPDATE prontuario SET data_consulta = ?, diagnostico = ?, tratamento = ?, observacoes = ?, animal_id = ? WHERE id = ?";
+        String query = "UPDATE prontuario SET data_consulta = ?, diagnostico = ?, tratamento = ?, observacoes = ?, animal = ? WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setDate(1, new java.sql.Date(prontuario.getDataConsulta().getTime()));
             statement.setString(2, prontuario.getDiagnostico());
             statement.setString(3, prontuario.getTratamento());
             statement.setString(4, prontuario.getObservacoes());
-            statement.setInt(5, prontuario.getAnimal().getId());
+            statement.setInt(5, prontuario.getAnimal());
             statement.setInt(6, prontuario.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -62,11 +62,11 @@ public class ProntuarioDao extends DAO {
         }
     }
 
-    public void deleteProntuario(String id) {
+    public void deleteProntuario(int id) {
         String query = "DELETE FROM prontuario WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class ProntuarioDao extends DAO {
                 prontuario.setDiagnostico(resultSet.getString("diagnostico"));
                 prontuario.setTratamento(resultSet.getString("tratamento"));
                 prontuario.setObservacoes(resultSet.getString("observacoes"));
-
+                prontuario.setAnimal(resultSet.getInt("animal"));
                 prontuarios.add(prontuario);
             }
         } catch (SQLException e) {

@@ -7,6 +7,13 @@ public class Exame {
     private String tipo;
     private Date data;
     private String resultado;
+    private int consulta;
+
+    @Override
+    public String toString() {
+        return "\nExame [id=" + id + ", tipo=" + tipo + ", data=" + data + ", resultado=" + resultado + ", consulta="
+                + consulta + "]\n";
+    }
 
     public Exame() {
     }
@@ -54,5 +61,13 @@ public class Exame {
     }
 
     public void registrarResultado() {
+    }
+
+    public int getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(int consulta) {
+        this.consulta = consulta;
     }
 }

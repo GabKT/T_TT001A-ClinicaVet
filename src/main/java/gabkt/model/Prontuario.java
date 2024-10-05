@@ -8,13 +8,13 @@ public class Prontuario {
     private String diagnostico;
     private String tratamento;
     private String observacoes;
-    private Animal animal;
+    private int animal;
 
     public Prontuario() {
     }
 
     public Prontuario(int id, Date dataConsulta, String diagnostico, String tratamento, String observacoes,
-            Animal animal) {
+            int animal) {
         this.id = id;
         this.dataConsulta = dataConsulta;
         this.diagnostico = diagnostico;
@@ -69,11 +69,18 @@ public class Prontuario {
     public void visualizarProntuario() {
     }
 
-    public Animal getAnimal() {
+    public int getAnimal() {
         return animal;
     }
 
-    public void setAnimal(Animal animal) {
+    public void setAnimal(int animal) {
         this.animal = animal;
     }
+
+    @Override
+    public String toString() {
+        return "\nProntuario [id=" + id + ", dataConsulta=" + dataConsulta + ", diagnostico=" + diagnostico
+                + ", tratamento=" + tratamento + ", observacoes=" + observacoes + ", animal=" + animal + "]\n";
+    }
+
 }

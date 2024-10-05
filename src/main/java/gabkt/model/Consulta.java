@@ -1,24 +1,23 @@
 package gabkt.model;
 
+import java.sql.Time;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class Consulta {
     private int id;
     private Date data;
-    private TimeZone horario;
+    private Time horario;
     private String tipo;
     private String status;
-    private Animal animal;
-    private Cliente cliente;
-    private Veterinario veterinario;
+    private int animal;
+    private int cliente;
+    private int veterinario;
 
     public Consulta() {
     }
 
-    public Consulta(int id, Date data, TimeZone horario, String tipo, String status, Animal animal, Cliente cliente,
-            Veterinario veterinario) {
-        this.id = id;
+    public Consulta(Date data, Time horario, String tipo, String status, int animal, int cliente,
+            int veterinario) {
         this.data = data;
         this.horario = horario;
         this.tipo = tipo;
@@ -44,11 +43,11 @@ public class Consulta {
         this.data = data;
     }
 
-    public TimeZone getHorario() {
+    public Time getHorario() {
         return horario;
     }
 
-    public void setHorario(TimeZone horario) {
+    public void setHorario(Time horario) {
         this.horario = horario;
     }
 
@@ -68,29 +67,36 @@ public class Consulta {
         this.status = status;
     }
 
-    public Animal getAnimal() {
+    public int getAnimal() {
         return animal;
     }
 
-    public void setAnimal(Animal animal) {
+    public void setAnimal(int animal) {
         this.animal = animal;
     }
 
-    public Cliente getCliente() {
+    public int getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
 
-    public Veterinario getVeterinario() {
+    public int getVeterinario() {
         return veterinario;
     }
 
-    public void setVeterinario(Veterinario veterinario) {
+    public void setVeterinario(int veterinario) {
         this.veterinario = veterinario;
     }
+
+    @Override
+    public String toString() {
+        return "\nConsulta [id=" + id + ", data=" + data + ", horario=" + horario + ", tipo=" + tipo + ", status="
+                + status + ", animal=" + animal + ", cliente=" + cliente + ", veterinario=" + veterinario + "]\n";
+    }
+
 }
 
 /*

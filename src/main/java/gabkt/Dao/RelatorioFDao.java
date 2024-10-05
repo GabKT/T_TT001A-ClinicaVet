@@ -9,24 +9,23 @@ import java.util.List;
 public class RelatorioFDao extends DAO {
 
     public void addRelatorioF(RelatorioF relatorio) {
-        String query = "INSERT INTO relatorio_f (id, periodo, valor_total) VALUES (?, ?, ?)";
+        String query = "INSERT INTO relatorio_f (periodo, valor_total) VALUES ( ?, ?)";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, relatorio.getId());
-            statement.setDate(2, new java.sql.Date(relatorio.getPeriodo().getTime()));
-            statement.setDouble(3, relatorio.getValorTotal());
+            statement.setDate(1, new java.sql.Date(relatorio.getPeriodo().getTime()));
+            statement.setDouble(2, relatorio.getValorTotal());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public RelatorioF getRelatorioFById(String id) {
+    public RelatorioF getRelatorioFById(int id) {
         String query = "SELECT * FROM relatorio_f WHERE id = ?";
         RelatorioF relatorio = null;
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
@@ -54,11 +53,11 @@ public class RelatorioFDao extends DAO {
         }
     }
 
-    public void deleteRelatorioF(String id) {
+    public void deleteRelatorioF(int id) {
         String query = "DELETE FROM relatorio_f WHERE id = ?";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
