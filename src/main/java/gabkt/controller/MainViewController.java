@@ -1,16 +1,36 @@
 package gabkt.controller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.io.IOException;
 
-public class MainViewController {
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
+
+public class MainViewController implements Initializable {
 
     @FXML
-    private void sayHello() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Hello");
-        alert.setHeaderText(null);
-        alert.setContentText("Hello, JavaFX!");
-        alert.showAndWait();
+    private MenuItem menuItemListarClientes;
+    @FXML
+    MenuItem menuItemListarAnimais;
+    @FXML
+    MenuItem menuItemListarVeterinarios;
+
+    @FXML
+    private AnchorPane anchorPane;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // TODO
     }
+
+    @FXML
+    public void handleMenuItemListarClientes() throws IOException {
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/ListarClienteView.fxml"));
+        anchorPane.getChildren().setAll(a);
+    }
+
 }
