@@ -11,15 +11,15 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:controller="gabkt.controller.ListarClienteController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.ListarClienteController">
    <children>
       <SplitPane dividerPositions="0.4080267558528428" layoutX="172.0" layoutY="102.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView fx:id="tableViewClientes" layoutX="27.0" layoutY="91.0" prefHeight="398.0" prefWidth="241.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableViewClientes" layoutX="27.0" layoutY="50.0" prefHeight="348.0" prefWidth="241.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                     <columns>
                       <TableColumn fx:id="tableColumnClienteNome" prefWidth="75.0" text="Nome" />
                       <TableColumn fx:id="tableColumnClienteCPF" prefWidth="75.0" text="CPF" />
@@ -28,11 +28,19 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
+                  <Label layoutX="56.0" layoutY="14.0" text="Lista de Clientes">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0">
                <children>
-                  <Label layoutX="23.0" layoutY="66.0" text="Informações Cliente" />
+                  <Label layoutX="23.0" layoutY="54.0" text="Informações do Cliente">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <GridPane layoutX="23.0" layoutY="108.0" prefHeight="175.0" prefWidth="200.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="63.0" />
@@ -63,7 +71,7 @@
                   </GridPane>
                   <ButtonBar buttonMinWidth="65.0" layoutY="306.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="351.0">
                     <buttons>
-                        <Button fx:id="btnAlterar" mnemonicParsing="false" text="Alterar" />
+                        <Button fx:id="btnAlterar" mnemonicParsing="false" onAction="#showAlterarClienteDialog" text="Alterar" />
                         <Button fx:id="btnRemover" mnemonicParsing="false" text="Remover" />
                     </buttons>
                      <padding>

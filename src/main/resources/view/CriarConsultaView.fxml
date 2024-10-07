@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="gabkt.controller.AlterarClienteDialogController" prefHeight="485.0" prefWidth="1217.0">
+    <children>
+        <DatePicker layoutX="23.0" layoutY="50.0" fx:id="datePicker" />
+        <Label layoutX="23.0" layoutY="26.0" text="Data" />
+
+        <Spinner layoutX="23.0" layoutY="115.0" prefHeight="25.0" prefWidth="175.0" fx:id="hourSpinner" />
+        <Label layoutX="23.0" layoutY="90.0" text="Horas" />
+
+        <Spinner layoutX="23.0" layoutY="177.0" fx:id="minuteSpinner" />
+        <Label layoutX="23.0" layoutY="151.0" text="Minutos" />
+
+        <Label layoutX="23.0" layoutY="226.0" text="Tipo" />
+        <TextField layoutX="23.0" layoutY="249.0" fx:id="tipoField" />
+
+        <Label layoutX="23.0" layoutY="286.0" text="Status" />
+        <TextField layoutX="23.0" layoutY="309.0" prefHeight="25.0" prefWidth="176.0" fx:id="statusField" />
+
+        <TextField fx:id="searchAnimalField" layoutX="285.0" layoutY="50.0" prefHeight="25.0" prefWidth="199.0" promptText="Pesquisar Animal" />
+        <TextField fx:id="searchClienteField" layoutX="585.0" layoutY="50.0" prefHeight="25.0" prefWidth="200.0" promptText="Pesquisar Cliente" />
+        <TextField fx:id="searchVeterinarioField" layoutX="856.0" layoutY="50.0" prefHeight="25.0" prefWidth="199.0" promptText="Pesquisar Veterinário" />
+
+        <TableView fx:id="animalTableView" layoutX="284.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn prefWidth="109.0" text="Nome" />
+                <TableColumn prefWidth="90.0" text="Dono" />
+            </columns>
+        </TableView>
+
+        <TableView fx:id="clienteTableView" layoutX="585.0" layoutY="102.0" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn prefWidth="110.0" text="Nome" />
+                <TableColumn prefWidth="89.0" text="CPF" />
+            </columns>
+        </TableView>
+
+        <TableView fx:id="veterinarioTableView" layoutX="856.0" layoutY="102.0" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn prefWidth="96.0" text="Nome" />
+                <TableColumn prefWidth="103.0" text="CPF" />
+            </columns>
+        </TableView>
+
+        <Button layoutX="23.0" layoutY="370.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="173.0" text="Cadastrar Consulta" />
+    </children>
+</AnchorPane>

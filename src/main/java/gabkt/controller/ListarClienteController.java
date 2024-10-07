@@ -1,5 +1,6 @@
 package gabkt.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -9,12 +10,16 @@ import gabkt.model.Cliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class ListarClienteController implements Initializable {
     @FXML
@@ -48,6 +53,9 @@ public class ListarClienteController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         carregarTableViewCliente();
+
+        tableViewClientes.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> selecionaritemTableViewClientes(newValue));
     }
 
     public void carregarTableViewCliente() {
@@ -57,6 +65,34 @@ public class ListarClienteController implements Initializable {
 
         observableListClientes = FXCollections.observableArrayList(listClientes);
         tableViewClientes.setItems(observableListClientes);
+    }
+
+    public void selecionaritemTableViewClientes(Cliente cliente) {
+        labelClienteID.setText(String.valueOf(cliente.getId()));
+        labelClienteNome.setText(String.valueOf(cliente.getNome()));
+        labelClienteCPF.setText(String.valueOf(cliente.getCpf()));
+        labelClienteTelefone.setText(String.valueOf(cliente.getTelefone()));
+        labelClienteEmail.setText(String.valueOf(cliente.getEmail()));
+        labelClienteEndereco.setText(String.valueOf(cliente.getEndereco()));
+    }
+
+    public void showAlterarClienteDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AlterarClienteDialogView.fxml"));
+            AnchorPane page = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Alterar Cliente");
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            AlterarClienteDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

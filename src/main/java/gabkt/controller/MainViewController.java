@@ -24,12 +24,24 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO
+        AnchorPane a;
+        try {
+            a = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/ListarClienteView.fxml"));
+            anchorPane.getChildren().setAll(a);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void handleMenuItemListarClientes() throws IOException {
         AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/ListarClienteView.fxml"));
+        anchorPane.getChildren().setAll(a);
+    }
+
+    @FXML
+    public void handleMenuItemCriarConsulta() throws IOException {
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/CriarConsultaView.fxml"));
         anchorPane.getChildren().setAll(a);
     }
 
