@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="gabkt.controller.AlterarClienteDialogController" prefHeight="485.0" prefWidth="1217.0">
+<AnchorPane prefHeight="329.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.CriarConsultaController">
     <children>
-        <DatePicker layoutX="23.0" layoutY="50.0" fx:id="datePicker" />
+        <DatePicker fx:id="datePicker" layoutX="23.0" layoutY="50.0" />
         <Label layoutX="23.0" layoutY="26.0" text="Data" />
 
-        <Spinner layoutX="23.0" layoutY="115.0" prefHeight="25.0" prefWidth="175.0" fx:id="hourSpinner" />
-        <Label layoutX="23.0" layoutY="90.0" text="Horas" />
+        <TextField fx:id="timeTextField" layoutX="23.0" layoutY="109.0" prefHeight="25.0" prefWidth="175.0" promptText="HH:mm" />
+        <Label layoutX="23.0" layoutY="84.0" text="Horas" />
 
-        <Spinner layoutX="23.0" layoutY="177.0" fx:id="minuteSpinner" />
-        <Label layoutX="23.0" layoutY="151.0" text="Minutos" />
+        <Label layoutX="22.0" layoutY="151.0" text="Tipo" />
+        <TextField fx:id="tipoField" layoutX="22.0" layoutY="174.0" />
 
-        <Label layoutX="23.0" layoutY="226.0" text="Tipo" />
-        <TextField layoutX="23.0" layoutY="249.0" fx:id="tipoField" />
-
-        <Label layoutX="23.0" layoutY="286.0" text="Status" />
-        <TextField layoutX="23.0" layoutY="309.0" prefHeight="25.0" prefWidth="176.0" fx:id="statusField" />
+        <Label layoutX="22.0" layoutY="211.0" text="Status" />
+        <TextField fx:id="statusField" layoutX="22.0" layoutY="234.0" prefHeight="25.0" prefWidth="176.0" />
 
         <TextField fx:id="searchAnimalField" layoutX="285.0" layoutY="50.0" prefHeight="25.0" prefWidth="199.0" promptText="Pesquisar Animal" />
         <TextField fx:id="searchClienteField" layoutX="585.0" layoutY="50.0" prefHeight="25.0" prefWidth="200.0" promptText="Pesquisar Cliente" />
@@ -45,6 +47,6 @@
             </columns>
         </TableView>
 
-        <Button layoutX="23.0" layoutY="370.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="173.0" text="Cadastrar Consulta" />
+        <Button layoutX="24.0" layoutY="275.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="173.0" text="Cadastrar Consulta" />
     </children>
 </AnchorPane>

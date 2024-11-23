@@ -17,7 +17,7 @@ public class MainViewController implements Initializable {
     @FXML
     MenuItem menuItemListarAnimais;
     @FXML
-    MenuItem menuItemListarVeterinarios;
+    private MenuItem menuItemListarVeterinarios;
 
     @FXML
     private AnchorPane anchorPane;
@@ -42,6 +42,12 @@ public class MainViewController implements Initializable {
     @FXML
     public void handleMenuItemCriarConsulta() throws IOException {
         AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/CriarConsultaView.fxml"));
+        anchorPane.getChildren().setAll(a);
+    }
+
+    @FXML
+    public void handleMenuItemListarVeterinario() throws IOException {
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/VeterinarioView.fxml"));
         anchorPane.getChildren().setAll(a);
     }
 

@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import gabkt.Dao.ClienteDao;
 import gabkt.model.Cliente;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -44,9 +45,10 @@ public class ListarClienteController implements Initializable {
     private Label labelClienteEmail;
     @FXML
     private Label labelClienteEndereco;
+    @FXML
+    private TextField txtBuscarCliente;
 
     private List<Cliente> listClientes;
-    private ObservableList<Cliente> observableListClientes;
 
     private final ClienteDao clienteDao = new ClienteDao();
 
@@ -63,8 +65,9 @@ public class ListarClienteController implements Initializable {
         tableColumnClienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tableColumnClienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 
-        observableListClientes = FXCollections.observableArrayList(listClientes);
-        tableViewClientes.setItems(observableListClientes);
+        tableViewClientes.setItems(FXCollections.observableArrayList(listClientes));
+
+        txtBuscarCliente.textProperty().addListener((observale, oldValue, newValue) -> buscarClientePorCPF(newValue));
     }
 
     public void selecionaritemTableViewClientes(Cliente cliente) {
@@ -93,6 +96,14 @@ public class ListarClienteController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void buscarClientePorCPF(String cpf) {
+        List<Cliente> filtrados = listClientes.stream()
+                .filter(cliente -> String.valueOf(cliente.getCpf()).contains(cpf))
+                .collect(Collectors.toList());
+
+        tableViewClientes.setItems(FXCollections.observableArrayList(filtrados));
     }
 
 }

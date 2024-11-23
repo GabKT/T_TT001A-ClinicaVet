@@ -6,33 +6,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.MainViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.MainViewController">
    <children>
       <MenuBar>
         <menus>
             <Menu mnemonicParsing="false" text="Home">
                <items>
-                  <MenuItem fx:id="menuItemListarClientes" mnemonicParsing="false" onAction="#handleMenuItemListarClientes" text="Listar Clientes" />
-                  <MenuItem fx:id="menuItemListarAnimais" mnemonicParsing="false" text="Listar Animais" />
-                  <MenuItem fx:id="menuItemListarVeterinarios" mnemonicParsing="false" text="Listar Veterinários" />
+                  <MenuItem fx:id="menuItemListarClientes" mnemonicParsing="false" onAction="#handleMenuItemListarClientes" text="Clientes" />
+                  <MenuItem fx:id="menuItemListarAnimais" mnemonicParsing="false" text="Animais" />
+                  <MenuItem fx:id="menuItemListarVeterinarios" mnemonicParsing="false" onAction="#handleMenuItemListarVeterinario" text="Veterinários" />
                </items>
             </Menu>
-          <Menu mnemonicParsing="false" text="Cadastros">
-            <items>
-              <MenuItem fx:id="menuItemCadastrosClientes" mnemonicParsing="false" text="Clientes" />
-                  <MenuItem fx:id="menuItemCadastrosAnimais" mnemonicParsing="false" text="Animais" />
-                  <MenuItem fx:id="menuItemCadastrosVeterinarios" mnemonicParsing="false" text="Veterinários" />
-            </items>
-          </Menu>
           <Menu mnemonicParsing="false" text="Consultas">
             <items>
-              <MenuItem fx:id="menuItemCriarConsulta" mnemonicParsing="false" onAction="#handleMenuItemCriarConsulta" text="Criar nova Consulta" />
+              <MenuItem fx:id="menuItemCriarConsulta" mnemonicParsing="false" onAction="#handleMenuItemCriarConsulta" text="Agendar nova Consulta" />
                   <MenuItem fx:id="menuItemVisualizarConsultas" mnemonicParsing="false" text="Visualizar Consultas" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Exames">
             <items>
-              <MenuItem fx:id="menuItemCriarExame" mnemonicParsing="false" text="Criar novo Exame" />
+              <MenuItem fx:id="menuItemCriarExame" mnemonicParsing="false" text="Marcar novo Exame" />
                   <MenuItem fx:id="menuItemVisualizarExames" mnemonicParsing="false" text="Visualizar Exames" />
             </items>
           </Menu>

@@ -13,7 +13,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainView.fxml"));
         Parent root = loader.load();
         arg0.setTitle("Clínica Veterinária App");
-        arg0.setScene(new Scene(root, 600, 400));
+        arg0.setScene(new Scene(root, 1100, 600));
         arg0.show();
     }
 
