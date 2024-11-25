@@ -13,32 +13,22 @@
             <Menu mnemonicParsing="false" text="Home">
                <items>
                   <MenuItem fx:id="menuItemListarClientes" mnemonicParsing="false" onAction="#handleMenuItemListarClientes" text="Clientes" />
-                  <MenuItem fx:id="menuItemListarAnimais" mnemonicParsing="false" text="Animais" />
+                  <MenuItem fx:id="menuItemListarAnimais" mnemonicParsing="false" onAction="#handleMenuItemListarAnimal" text="Animais" />
                   <MenuItem fx:id="menuItemListarVeterinarios" mnemonicParsing="false" onAction="#handleMenuItemListarVeterinario" text="Veterinários" />
+                  <MenuItem fx:id="menuItemListarExames" mnemonicParsing="false" onAction="#handleMenuItemListarExames" text="Exames" />
+                  <MenuItem fx:id="menuItemListarRelatorios" mnemonicParsing="false" onAction="#handleMenuItemListarRelatorios" text="Relatórios" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Consultas">
             <items>
               <MenuItem fx:id="menuItemCriarConsulta" mnemonicParsing="false" onAction="#handleMenuItemCriarConsulta" text="Agendar nova Consulta" />
-                  <MenuItem fx:id="menuItemVisualizarConsultas" mnemonicParsing="false" text="Visualizar Consultas" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Exames">
-            <items>
-              <MenuItem fx:id="menuItemCriarExame" mnemonicParsing="false" text="Marcar novo Exame" />
-                  <MenuItem fx:id="menuItemVisualizarExames" mnemonicParsing="false" text="Visualizar Exames" />
+                  <MenuItem fx:id="menuItemVisualizarConsultas" mnemonicParsing="false" onAction="#handleMenuItemVisualizarConsulta" text="Visualizar Consultas" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Prontuários">
                <items>
-                  <MenuItem fx:id="menuItemCriarProntuario" mnemonicParsing="false" text="Criar novo Prontuário" />
-                  <MenuItem fx:id="menuItemVisualizarProntuarios" mnemonicParsing="false" text="Visualizar Prontuários" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Financeiro">
-               <items>
-                  <MenuItem fx:id="menuItemCriarProntuario1" mnemonicParsing="false" text="Criar novo Relatório" />
-                  <MenuItem fx:id="menuItemVisualizarProntuarios1" mnemonicParsing="false" text="Visualizar Relatórios" />
+                  <MenuItem fx:id="menuItemCriarProntuario" mnemonicParsing="false" onAction="#handleMenuItemCriarProntuario" text="Criar novo Prontuário" />
+                  <MenuItem fx:id="menuItemVisualizarProntuarios" mnemonicParsing="false" onAction="#handleMenuItemVisualizarProntuario" text="Visualizar Prontuários" />
                </items>
             </Menu>
         </menus>
