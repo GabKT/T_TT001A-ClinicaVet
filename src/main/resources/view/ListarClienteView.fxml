@@ -82,13 +82,14 @@
                   </GridPane>
                   <ButtonBar buttonMinWidth="65.0" layoutY="375.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="308.0">
                     <buttons>
-                        <Button fx:id="btnAlterar" mnemonicParsing="false" onAction="#showAlterarClienteDialog" text="Alterar" />
-                        <Button fx:id="btnRemover" mnemonicParsing="false" text="Remover" />
+                        <Button fx:id="btnAlterar" mnemonicParsing="false" onAction="#alterarCliente" text="Alterar" />
+                        <Button fx:id="btnRemover" mnemonicParsing="false" onAction="#removerClienteSelecionado" text="Remover" />
                     </buttons>
                      <padding>
                         <Insets right="105.0" />
                      </padding>
                   </ButtonBar>
+                  <Button layoutX="61.0" layoutY="415.0" mnemonicParsing="false" onAction="#carregarTableViewCliente" prefHeight="25.0" prefWidth="143.0" text="Atualizar Tabela" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="440.0">
@@ -107,7 +108,7 @@
                   <TextField fx:id="txtTelefoneCliente" layoutX="40.0" layoutY="224.0" />
                   <TextField fx:id="txtEmailCliente" layoutX="228.0" layoutY="224.0" />
                   <TextField fx:id="txtEnderecoCliente" layoutX="40.0" layoutY="294.0" />
-                  <Button fx:id="btnCadastrarCliente" layoutX="228.0" layoutY="294.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Cadastrar" />
+                  <Button fx:id="btnCadastrarCliente" layoutX="228.0" layoutY="294.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="25.0" prefWidth="149.0" text="Cadastrar" />
                </children>
             </AnchorPane>
         </items>

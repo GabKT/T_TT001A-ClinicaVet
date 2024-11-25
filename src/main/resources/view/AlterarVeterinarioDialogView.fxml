@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.AlterarClienteDialogController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.AlterarVetDialogController">
    <children>
       <GridPane layoutX="57.0" layoutY="83.0" prefHeight="180.0" prefWidth="240.0">
         <columnConstraints>
@@ -27,21 +27,21 @@
             <Label text="Nome" />
             <Label text="CPF" GridPane.rowIndex="1" />
             <Label text="Telefone" GridPane.rowIndex="2" />
-            <Label text="Email" GridPane.rowIndex="3" />
-            <Label text="Endereço" GridPane.rowIndex="4" />
-            <TextField fx:id="txtAlterarNomeCliente" GridPane.columnIndex="1" />
-            <TextField fx:id="txtAlterarCPFCliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="txtAlterarTelefoneCliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="txtAlterarEmailCliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="txtAlterarEnderecoCliente" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="CRMV" GridPane.rowIndex="3" />
+            <Label text="Especialidade" GridPane.rowIndex="4" />
+            <TextField fx:id="txtNome" GridPane.columnIndex="1" />
+            <TextField fx:id="txtCPF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtTelefone" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtCRMV" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="txtEspecialidade" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Label layoutX="57.0" layoutY="43.0" text="Alterar Cliente">
+      <Label layoutX="57.0" layoutY="43.0" text="Alterar Veterinário">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="57.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleButtonCancelar" prefHeight="25.0" prefWidth="101.0" text="Cancelar" />
-      <Button fx:id="btnAtualizarCliente" layoutX="197.0" layoutY="290.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="25.0" prefWidth="101.0" text="Atualizar" />
+      <Button layoutX="57.0" layoutY="290.0" onAction="#handleButtonCancelar" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Cancelar" />
+      <Button layoutX="197.0" layoutY="290.0" onAction="#handleOk" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Atualizar" />
    </children>
 </AnchorPane>

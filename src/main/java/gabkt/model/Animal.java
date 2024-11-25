@@ -15,8 +15,16 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(int id, String nome, String especie, String raca, int idade, double peso, int dono,
-            List<Prontuario> historicoMedico) {
+    public Animal(String nome, String especie, String raca, int idade, double peso, int dono) {
+        this.nome = nome;
+        this.especie = especie;
+        this.raca = raca;
+        this.idade = idade;
+        this.peso = peso;
+        this.dono = dono;
+    }
+
+    public Animal(int id, String nome, String especie, String raca, int idade, double peso, int dono) {
         this.id = id;
         this.nome = nome;
         this.especie = especie;
@@ -24,7 +32,6 @@ public class Animal {
         this.idade = idade;
         this.peso = peso;
         this.dono = dono;
-        this.historicoMedico = historicoMedico;
     }
 
     public String getNome() {

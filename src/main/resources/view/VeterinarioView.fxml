@@ -82,7 +82,7 @@
                   </GridPane>
                   <ButtonBar buttonMinWidth="65.0" layoutY="375.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="308.0">
                     <buttons>
-                        <Button fx:id="btnAlterarVet" mnemonicParsing="false" text="Alterar" />
+                        <Button fx:id="btnAlterarVet" mnemonicParsing="false" onAction="#alterarVet" text="Alterar" />
                         <Button fx:id="btnRemoverVet" mnemonicParsing="false" onAction="#excluirVeterinario" text="Remover" />
                     </buttons>
                      <padding>

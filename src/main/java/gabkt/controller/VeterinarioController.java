@@ -1,5 +1,6 @@
 package gabkt.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -10,13 +11,17 @@ import gabkt.model.Veterinario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class VeterinarioController implements Initializable {
 
@@ -136,6 +141,39 @@ public class VeterinarioController implements Initializable {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println("Erro ao cadastrar o veterinário: " + e.getMessage());
+        }
+    }
+
+    public void buscarVetPorCPF(String cpf) {
+        List<Veterinario> vets = veterinarios.stream().filter(vet -> String.valueOf(vet.getCpf()).contains(cpf))
+                .collect(Collectors.toList());
+        tableViewVeterinario.setItems(FXCollections.observableArrayList(vets));
+    }
+
+    @FXML
+    public void alterarVet() {
+        Veterinario vet = tableViewVeterinario.getSelectionModel().getSelectedItem();
+        showAlterarVetDialog(vet);
+        carregarTableViewVeterinario();
+    }
+
+    public void showAlterarVetDialog(Veterinario vet) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AlterarVeterinarioDialogView.fxml"));
+            AnchorPane page = loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Alterar Veterinário");
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            AlterarVetDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setVet(vet);
+
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
