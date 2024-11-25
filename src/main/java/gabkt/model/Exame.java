@@ -18,6 +18,21 @@ public class Exame {
     public Exame() {
     }
 
+    public Exame(int id, String tipo, Date data, String resultado, int consulta) {
+        this.id = id;
+        this.tipo = tipo;
+        this.data = data;
+        this.resultado = resultado;
+        this.consulta = consulta;
+    }
+
+    public Exame(String tipo, Date data, String resultado, int consulta) {
+        this.tipo = tipo;
+        this.data = data;
+        this.resultado = resultado;
+        this.consulta = consulta;
+    }
+
     public Exame(int id, String tipo, Date data, String resultado) {
         this.id = id;
         this.tipo = tipo;

@@ -9,39 +9,19 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.45131375579598143" prefHeight="399.0" prefWidth="649.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
             <SplitPane dividerPositions="0.4659949622166247" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                     <children>
-                        <DatePicker layoutX="20.0" layoutY="67.0" />
-                        <TextField layoutX="20.0" layoutY="128.0" />
-                        <Label layoutX="20.0" layoutY="111.0" text="Faturamento" />
-                        <Label layoutX="20.0" layoutY="50.0" text="Data" />
-                        <Button layoutX="205.0" layoutY="128.0" mnemonicParsing="false" text="Registrar" />
-                        <Label layoutX="19.0" layoutY="21.0" text="Relatório" />
-                     </children>
-                  </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                     <children>
-                        <Label layoutX="24.0" layoutY="25.0" text="Item Selecionado" />
-                        <Label layoutX="24.0" layoutY="63.0" text="Data" />
-                        <Label layoutX="24.0" layoutY="88.0" text="Faturamento" />
-                        <Label layoutX="113.0" layoutY="63.0" text="Label" />
-                        <Label layoutX="113.0" layoutY="88.0" text="Label" />
-                        <Button layoutX="23.0" layoutY="129.0" mnemonicParsing="false" text="Alterar" />
-                        <Button layoutX="90.0" layoutY="129.0" mnemonicParsing="false" text="Remover" />
-                     </children>
-                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
               </items>
             </SplitPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView layoutX="19.0" layoutY="133.0" prefHeight="236.0" prefWidth="298.0">
+                  <TableView layoutX="57.0" layoutY="412.0" prefHeight="236.0" prefWidth="298.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="Data" />
                       <TableColumn prefWidth="75.0" text="Faturamento" />
@@ -50,8 +30,21 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Label layoutX="19.0" layoutY="70.0" text="Buscar Data" />
-                  <TextField layoutX="19.0" layoutY="98.0" />
+                  <Label layoutX="57.0" layoutY="349.0" text="Buscar Data" />
+                  <TextField layoutX="57.0" layoutY="377.0" />
+                  <DatePicker layoutX="46.0" layoutY="132.0" />
+                  <TextField layoutX="46.0" layoutY="193.0" />
+                  <Label layoutX="46.0" layoutY="176.0" text="Faturamento" />
+                  <Label layoutX="46.0" layoutY="115.0" text="Data" />
+                  <Button layoutX="258.0" layoutY="132.0" mnemonicParsing="false" text="Registrar" />
+                  <Label layoutX="331.0" layoutY="43.0" text="Relatório" />
+                  <Label layoutX="465.0" layoutY="413.0" text="Item Selecionado" />
+                  <Label layoutX="465.0" layoutY="451.0" text="Data" />
+                  <Label layoutX="465.0" layoutY="476.0" text="Faturamento" />
+                  <Label layoutX="554.0" layoutY="451.0" text="Label" />
+                  <Label layoutX="554.0" layoutY="476.0" text="Label" />
+                  <Button layoutX="464.0" layoutY="517.0" mnemonicParsing="false" text="Alterar" />
+                  <Button layoutX="531.0" layoutY="517.0" mnemonicParsing="false" text="Remover" />
                </children>
             </AnchorPane>
         </items>

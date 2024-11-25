@@ -115,4 +115,32 @@ public class ConsultaDao extends DAO {
 
         return consultas;
     }
+
+    public List<Consulta> getAllConsultas() {
+        String sql = "SELECT * FROM consulta";
+        List<Consulta> consultas = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Consulta consulta = new Consulta();
+                consulta.setId(rs.getInt("id"));
+                consulta.setData(rs.getDate("data"));
+                consulta.setHorario(rs.getTime("horario"));
+                consulta.setTipo(rs.getString("tipo"));
+                consulta.setStatus(rs.getString("status"));
+                consulta.setAnimal(rs.getInt("animal"));
+                consulta.setCliente(rs.getInt("cliente"));
+                consulta.setVeterinario(rs.getInt("veterinario"));
+                consultas.add(consulta);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return consultas;
+    }
+
 }

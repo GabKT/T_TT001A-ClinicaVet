@@ -10,33 +10,33 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="1232.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.ExameController">
    <children>
-      <SplitPane dividerPositions="0.4479674796747967" prefHeight="546.0" prefWidth="1090.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.4479674796747967" prefHeight="546.0" prefWidth="1090.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
         <items>
-            <SplitPane dividerPositions="0.6378676470588235" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+            <SplitPane dividerPositions="0.5847701149425287" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="343.0" prefWidth="529.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="420.0" prefWidth="578.0">
                      <children>
                         <Label layoutX="222.0" layoutY="32.0" text="Registrar Exame" />
-                        <Label layoutX="51.0" layoutY="83.0" text="Tipo" />
-                        <Label layoutX="51.0" layoutY="119.0" text="Data" />
-                        <Label layoutX="51.0" layoutY="154.0" text="Resultado" />
-                        <TextField layoutX="116.0" layoutY="79.0" prefHeight="25.0" prefWidth="203.0" />
-                        <TextArea layoutX="51.0" layoutY="174.0" prefHeight="135.0" prefWidth="269.0" />
-                        <Button layoutX="400.0" layoutY="229.0" mnemonicParsing="false" text="Registrar" />
-                        <Label layoutX="51.0" layoutY="322.0" text="Buscar Consulta" />
-                        <TextField layoutX="143.0" layoutY="318.0" prefHeight="25.0" prefWidth="177.0" />
-                        <DatePicker layoutX="115.0" layoutY="115.0" prefHeight="25.0" prefWidth="203.0" />
+                        <Label layoutX="83.0" layoutY="108.0" text="Tipo" />
+                        <Label layoutX="83.0" layoutY="144.0" text="Data" />
+                        <Label layoutX="83.0" layoutY="179.0" text="Resultado" />
+                        <TextField fx:id="txtCadTipo" layoutX="148.0" layoutY="104.0" prefHeight="25.0" prefWidth="203.0" />
+                        <TextArea fx:id="txtCadResultado" layoutX="83.0" layoutY="199.0" prefHeight="135.0" prefWidth="269.0" />
+                        <Button layoutX="432.0" layoutY="254.0" mnemonicParsing="false" onAction="#registrarExame" text="Registrar" />
+                        <Label layoutX="83.0" layoutY="347.0" text="Buscar Consulta" />
+                        <TextField fx:id="txtBuscarConsulta" layoutX="175.0" layoutY="343.0" prefHeight="25.0" prefWidth="177.0" />
+                        <DatePicker fx:id="dateCad" layoutX="147.0" layoutY="140.0" prefHeight="25.0" prefWidth="203.0" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="529.0">
                      <children>
-                        <TableView layoutX="173.0" layoutY="7.0" prefHeight="213.0" prefWidth="529.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tableViewConsulta" layoutX="173.0" layoutY="7.0" prefHeight="213.0" prefWidth="529.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn prefWidth="186.0" text="Data" />
-                            <TableColumn prefWidth="169.0" text="Animal" />
-                              <TableColumn prefWidth="195.0" text="Veterinário" />
+                            <TableColumn fx:id="tableColumnDataConsulta" prefWidth="186.0" text="Data" />
+                            <TableColumn fx:id="tableColumnAnimalConsulta" prefWidth="169.0" text="Animal" />
+                              <TableColumn fx:id="tableColumnVeterinario" prefWidth="195.0" text="Veterinário" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -51,34 +51,36 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="571.0" prefWidth="426.0">
                      <children>
                         <Label layoutX="112.0" layoutY="40.0" text="Consultar Exames" />
-                        <TableView layoutX="24.0" layoutY="158.0" prefHeight="322.0" prefWidth="269.0">
+                        <TableView fx:id="tableViewExame" layoutX="24.0" layoutY="158.0" prefHeight="428.0" prefWidth="309.0">
                           <columns>
-                            <TableColumn prefWidth="133.0" text="Data" />
-                              <TableColumn prefWidth="135.0" text="Animal" />
+                            <TableColumn fx:id="tableColumnData" prefWidth="133.0" text="Data" />
+                              <TableColumn fx:id="tableColumnAnimal" prefWidth="135.0" text="Animal" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
                         <Label layoutX="26.0" layoutY="116.0" text="Buscar Exames" />
-                        <TextField layoutX="118.0" layoutY="109.0" prefHeight="25.0" prefWidth="177.0" />
+                        <TextField fx:id="txtBuscarExame" layoutX="118.0" layoutY="109.0" prefHeight="25.0" prefWidth="177.0" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="571.0" prefWidth="291.0">
                      <children>
-                        <Label layoutX="131.0" layoutY="38.0" text="Informações" />
-                        <Label layoutX="29.0" layoutY="87.0" text="Tipo" />
-                        <TextField layoutX="64.0" layoutY="83.0" prefHeight="25.0" prefWidth="234.0" />
-                        <Label layoutX="28.0" layoutY="130.0" text="Data" />
-                        <TextField layoutX="64.0" layoutY="126.0" prefHeight="25.0" prefWidth="234.0" />
-                        <Label layoutX="27.0" layoutY="164.0" text="Resultado" />
-                        <TextArea layoutX="29.0" layoutY="193.0" prefHeight="135.0" prefWidth="269.0" />
-                        <Label layoutX="29.0" layoutY="352.0" text="Animal" />
-                        <Label layoutX="29.0" layoutY="390.0" text="Veterinário" />
-                        <TextField layoutX="71.0" layoutY="348.0" prefHeight="25.0" prefWidth="226.0" />
-                        <TextField layoutX="90.0" layoutY="386.0" prefHeight="25.0" prefWidth="209.0" />
-                        <Button layoutX="27.0" layoutY="433.0" mnemonicParsing="false" text="Alterar" />
-                        <Button layoutX="27.0" layoutY="475.0" mnemonicParsing="false" text="Remover" />
+                        <Label layoutX="132.0" layoutY="65.0" text="Informações" />
+                        <Label layoutX="30.0" layoutY="143.0" text="Tipo" />
+                        <TextField fx:id="txtInfoTipo" layoutX="65.0" layoutY="139.0" prefHeight="25.0" prefWidth="234.0" />
+                        <Label layoutX="29.0" layoutY="186.0" text="Data" />
+                        <Label layoutX="28.0" layoutY="220.0" text="Resultado" />
+                        <TextArea fx:id="txtInfoResultado" layoutX="30.0" layoutY="249.0" prefHeight="135.0" prefWidth="269.0" />
+                        <Label layoutX="30.0" layoutY="408.0" text="Animal" />
+                        <Label layoutX="30.0" layoutY="446.0" text="Veterinário" />
+                        <TextField fx:id="txtInfoAnimal" layoutX="72.0" layoutY="404.0" prefHeight="25.0" prefWidth="226.0" />
+                        <TextField fx:id="txtInfoVeterinario" layoutX="91.0" layoutY="442.0" prefHeight="25.0" prefWidth="209.0" />
+                        <Button layoutX="28.0" layoutY="556.0" mnemonicParsing="false" onAction="#atualizarExame" text="Alterar" />
+                        <Button layoutX="110.0" layoutY="556.0" mnemonicParsing="false" onAction="#removerExame" text="Remover" />
+                        <TextField fx:id="txtInfoData" layoutX="67.0" layoutY="182.0" prefHeight="25.0" prefWidth="234.0" />
+                        <TextField fx:id="txtIdConsulta" layoutX="57.0" layoutY="477.0" prefHeight="25.0" prefWidth="64.0" />
+                        <Label fx:id="idExame" layoutX="36.0" layoutY="481.0" prefHeight="17.0" prefWidth="12.0" />
                      </children>
                   </AnchorPane>
               </items>

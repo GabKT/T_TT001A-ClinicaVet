@@ -14,21 +14,21 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="1022.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.VeterinarioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.VeterinarioController">
    <children>
       <SplitPane dividerPositions="0.24803921568627452, 0.5558823529411765" layoutX="172.0" layoutY="102.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-            <SplitPane dividerPositions="0.24371859296482412" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+            <SplitPane dividerPositions="0.20487106017191978" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="56.0" prefWidth="250.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="143.0" prefWidth="319.0">
                      <children>
                         <Label layoutX="61.0" layoutY="14.0" text="Lista de Veterinários">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtBuscarVet" layoutX="25.0" layoutY="73.0" prefHeight="25.0" prefWidth="200.0" />
-                        <Label layoutX="25.0" layoutY="56.0" text="Buscar CPF" />
+                        <TextField fx:id="txtBuscarVet" layoutX="22.0" layoutY="92.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Label layoutX="22.0" layoutY="75.0" text="Buscar CPF" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="60.0" prefWidth="113.0">
@@ -48,11 +48,11 @@
             </SplitPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="350.0">
                <children>
-                  <Label layoutX="23.0" layoutY="54.0" text="Informações do Veterinário">
+                  <Label layoutX="74.0" layoutY="130.0" text="Informações do Veterinário">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <GridPane layoutX="23.0" layoutY="121.0" prefHeight="205.0" prefWidth="200.0">
+                  <GridPane layoutX="82.0" layoutY="196.0" prefHeight="270.0" prefWidth="200.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="78.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="122.0" />
@@ -80,7 +80,7 @@
                         <Label fx:id="labelVeterinarioEspecialidade" text="" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
-                  <ButtonBar buttonMinWidth="65.0" layoutY="375.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="308.0">
+                  <ButtonBar buttonMinWidth="65.0" layoutX="43.0" layoutY="517.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="308.0">
                     <buttons>
                         <Button fx:id="btnAlterarVet" mnemonicParsing="false" onAction="#alterarVet" text="Alterar" />
                         <Button fx:id="btnRemoverVet" mnemonicParsing="false" onAction="#excluirVeterinario" text="Remover" />
@@ -93,21 +93,21 @@
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="440.0">
                <children>
-                  <Label layoutX="123.0" layoutY="40.0" text="Cadastro Novo Veterinário">
+                  <Label layoutX="170.0" layoutY="143.0" text="Cadastro Novo Veterinário">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label layoutX="40.0" layoutY="127.0" text="Nome" />
-                  <Label layoutX="40.0" layoutY="198.0" text="Telefone" />
-                  <Label layoutX="40.0" layoutY="265.0" text="Especialidade" />
-                  <Label layoutX="229.0" layoutY="127.0" text="CPF" />
-                  <Label layoutX="225.0" layoutY="198.0" text="CRMV" />
-                  <TextField fx:id="txtNomeVet" layoutX="40.0" layoutY="154.0" />
-                  <TextField fx:id="txtCPFVet" layoutX="228.0" layoutY="154.0" />
-                  <TextField fx:id="txtTelefoneVet" layoutX="40.0" layoutY="224.0" />
-                  <TextField fx:id="txtCRMVVet" layoutX="228.0" layoutY="224.0" />
-                  <TextField fx:id="txtEspecialidadeVet" layoutX="40.0" layoutY="294.0" />
-                  <Button fx:id="btnCadastrarVet" layoutX="228.0" layoutY="294.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" onAction="#cadastrarVeterinario" text="Cadastrar" />
+                  <Label layoutX="118.0" layoutY="227.0" text="Nome" />
+                  <Label layoutX="118.0" layoutY="298.0" text="Telefone" />
+                  <Label layoutX="118.0" layoutY="365.0" text="Especialidade" />
+                  <Label layoutX="307.0" layoutY="227.0" text="CPF" />
+                  <Label layoutX="303.0" layoutY="298.0" text="CRMV" />
+                  <TextField fx:id="txtNomeVet" layoutX="118.0" layoutY="254.0" />
+                  <TextField fx:id="txtCPFVet" layoutX="306.0" layoutY="254.0" />
+                  <TextField fx:id="txtTelefoneVet" layoutX="118.0" layoutY="324.0" />
+                  <TextField fx:id="txtCRMVVet" layoutX="306.0" layoutY="324.0" />
+                  <TextField fx:id="txtEspecialidadeVet" layoutX="118.0" layoutY="394.0" />
+                  <Button fx:id="btnCadastrarVet" layoutX="306.0" layoutY="394.0" mnemonicParsing="false" onAction="#cadastrarVeterinario" prefHeight="25.0" prefWidth="149.0" text="Cadastrar" />
                </children>
             </AnchorPane>
         </items>

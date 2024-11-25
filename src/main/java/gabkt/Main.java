@@ -12,6 +12,7 @@ public class Main extends Application {
     public void start(Stage arg0) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainView.fxml"));
         Parent root = loader.load();
+        arg0.setResizable(false);
         arg0.setTitle("Clínica Veterinária App");
         arg0.setScene(new Scene(root, 1300, 700));
         arg0.show();
