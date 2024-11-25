@@ -13,6 +13,14 @@ public class Prontuario {
     public Prontuario() {
     }
 
+    public Prontuario(Date dataConsulta, String diagnostico, String tratamento, String observacoes, int animal) {
+        this.dataConsulta = dataConsulta;
+        this.diagnostico = diagnostico;
+        this.tratamento = tratamento;
+        this.observacoes = observacoes;
+        this.animal = animal;
+    }
+
     public Prontuario(int id, Date dataConsulta, String diagnostico, String tratamento, String observacoes,
             int animal) {
         this.id = id;

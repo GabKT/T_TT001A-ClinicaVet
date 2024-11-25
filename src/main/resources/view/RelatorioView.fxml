@@ -9,11 +9,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.RelatorioController">
    <children>
       <SplitPane dividerPositions="0.45131375579598143" prefHeight="399.0" prefWidth="649.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-            <SplitPane dividerPositions="0.4659949622166247" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+            <SplitPane dividerPositions="0.5214899713467048" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
@@ -21,30 +21,32 @@
             </SplitPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView layoutX="57.0" layoutY="412.0" prefHeight="236.0" prefWidth="298.0">
+                  <TableView fx:id="tableViewFaturamento" layoutX="367.0" layoutY="231.0" prefHeight="412.0" prefWidth="314.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Data" />
-                      <TableColumn prefWidth="75.0" text="Faturamento" />
+                      <TableColumn fx:id="tableColumnData" prefWidth="149.0" text="Data" />
+                      <TableColumn fx:id="tableColumnFaturamento" prefWidth="163.0" text="Faturamento" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Label layoutX="57.0" layoutY="349.0" text="Buscar Data" />
-                  <TextField layoutX="57.0" layoutY="377.0" />
-                  <DatePicker layoutX="46.0" layoutY="132.0" />
-                  <TextField layoutX="46.0" layoutY="193.0" />
-                  <Label layoutX="46.0" layoutY="176.0" text="Faturamento" />
-                  <Label layoutX="46.0" layoutY="115.0" text="Data" />
-                  <Button layoutX="258.0" layoutY="132.0" mnemonicParsing="false" text="Registrar" />
-                  <Label layoutX="331.0" layoutY="43.0" text="Relatório" />
-                  <Label layoutX="465.0" layoutY="413.0" text="Item Selecionado" />
-                  <Label layoutX="465.0" layoutY="451.0" text="Data" />
-                  <Label layoutX="465.0" layoutY="476.0" text="Faturamento" />
-                  <Label layoutX="554.0" layoutY="451.0" text="Label" />
-                  <Label layoutX="554.0" layoutY="476.0" text="Label" />
-                  <Button layoutX="464.0" layoutY="517.0" mnemonicParsing="false" text="Alterar" />
-                  <Button layoutX="531.0" layoutY="517.0" mnemonicParsing="false" text="Remover" />
+                  <Label layoutX="367.0" layoutY="158.0" text="Buscar por mês" />
+                  <TextField fx:id="txtBuscarData" layoutX="367.0" layoutY="186.0" />
+                  <DatePicker fx:id="datacad" layoutX="58.0" layoutY="192.0" />
+                  <TextField fx:id="txtCadFaturamento" layoutX="58.0" layoutY="253.0" />
+                  <Label layoutX="58.0" layoutY="236.0" text="Faturamento" />
+                  <Label layoutX="58.0" layoutY="175.0" text="Data" />
+                  <Button layoutX="61.0" layoutY="307.0" mnemonicParsing="false" onAction="#registrarFaturamento" text="Registrar" />
+                  <Label layoutX="331.0" layoutY="53.0" text="Relatório" />
+                  <Label layoutX="56.0" layoutY="399.0" text="Item Selecionado" />
+                  <Label layoutX="58.0" layoutY="477.0" text="Data" />
+                  <Label layoutX="57.0" layoutY="514.0" text="Faturamento" />
+                  <Button layoutX="57.0" layoutY="558.0" mnemonicParsing="false" prefHeight="25.0" onAction="#atualizarFaturamento" prefWidth="78.0" text="Alterar" />
+                  <Button layoutX="160.0" layoutY="558.0" mnemonicParsing="false" prefHeight="25.0" onAction="#deletarFaturamento" prefWidth="92.0" text="Remover" />
+                  <Label layoutX="58.0" layoutY="429.0" text="Id:" />
+                  <TextField fx:id="id" layoutX="91.0" layoutY="425.0" prefHeight="25.0" prefWidth="161.0" />
+                  <TextField fx:id="data" layoutX="103.0" layoutY="473.0" prefHeight="25.0" prefWidth="149.0" />
+                  <TextField fx:id="faturamento" layoutX="133.0" layoutY="510.0" prefHeight="25.0" prefWidth="120.0" />
                </children>
             </AnchorPane>
         </items>

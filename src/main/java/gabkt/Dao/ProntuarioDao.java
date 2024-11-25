@@ -8,7 +8,7 @@ import java.util.List;
 public class ProntuarioDao extends DAO {
 
     public void addProntuario(Prontuario prontuario) {
-        String query = "INSERT INTO prontuario (data_consulta, diagnostico, tratamento, observacoes, animal_id) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO prontuario (data_consulta, diagnostico, tratamento, observacoes, animal) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setDate(1, new java.sql.Date(prontuario.getDataConsulta().getTime()));

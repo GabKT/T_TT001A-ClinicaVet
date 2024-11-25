@@ -8,27 +8,27 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gabkt.controller.RegistrarProntuarioController">
    <children>
       <Label layoutX="608.0" layoutY="73.0" text="Criar Prontuário" />
       <Label layoutX="775.0" layoutY="350.0" text="Data da Consulta" />
-      <DatePicker layoutX="775.0" layoutY="373.0" />
+      <DatePicker fx:id="data" layoutX="775.0" layoutY="373.0" />
       <Label layoutX="769.0" layoutY="202.0" text="Diagnóstico" />
-      <TextArea layoutX="768.0" layoutY="228.0" prefHeight="94.0" prefWidth="323.0" />
+      <TextArea fx:id="txtDiagnostico" layoutX="768.0" layoutY="228.0" prefHeight="94.0" prefWidth="323.0" />
       <Label layoutX="418.0" layoutY="202.0" text="Tratamento" />
-      <TextArea layoutX="417.0" layoutY="223.0" prefHeight="103.0" prefWidth="323.0" />
-      <TextArea layoutX="416.0" layoutY="367.0" prefHeight="103.0" prefWidth="323.0" />
+      <TextArea fx:id="txtTratamento" layoutX="417.0" layoutY="223.0" prefHeight="103.0" prefWidth="323.0" />
+      <TextArea fx:id="txtObs" layoutX="416.0" layoutY="367.0" prefHeight="103.0" prefWidth="323.0" />
       <Label layoutX="418.0" layoutY="342.0" text="Observações" />
-      <TableView layoutX="72.0" layoutY="221.0" prefHeight="377.0" prefWidth="312.0">
+      <TableView fx:id="tableViewAnimal" layoutX="72.0" layoutY="221.0" prefHeight="377.0" prefWidth="312.0">
         <columns>
-          <TableColumn prefWidth="150.0" text="Animal" />
-          <TableColumn prefWidth="161.0" text="Dono" />
+          <TableColumn fx:id="tableColumnAnimal" prefWidth="150.0" text="Animal" />
+          <TableColumn fx:id="tableColumnDono" prefWidth="161.0" text="Dono" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
       <Label layoutX="72.0" layoutY="195.0" text="Animal" />
-      <Button layoutX="775.0" layoutY="445.0" mnemonicParsing="false" text="Registrar Prontuário" />
+      <Button layoutX="775.0" layoutY="445.0" mnemonicParsing="false" onAction="#registrarProntuario" text="Registrar Prontuário" />
    </children>
 </AnchorPane>

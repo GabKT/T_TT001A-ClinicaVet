@@ -10,6 +10,11 @@ public class RelatorioF {
     public RelatorioF() {
     }
 
+    public RelatorioF(Date periodo, Double valorTotal) {
+        this.periodo = periodo;
+        this.valorTotal = valorTotal;
+    }
+
     public RelatorioF(int id, Date periodo, Double valorTotal) {
         this.id = id;
         this.periodo = periodo;
